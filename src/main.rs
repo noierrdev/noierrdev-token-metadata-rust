@@ -70,7 +70,7 @@ async fn main() {
 
     println!("{}", metaplex_pda.to_string())
 
-    let metaplex_account_info=rpc_client.get_account(metaplex_pda);
+    let metaplex_account_info=rpc_client.get_account(&metaplex_pda);
     println!("{:?}",metaplex_account_info);
 }
 
