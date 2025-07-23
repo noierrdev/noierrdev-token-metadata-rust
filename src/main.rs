@@ -107,8 +107,24 @@ async fn main() {
     let metaplex_account_info_data=metaplex_account_info.data;
     println!("{:?}",metaplex_account_info_data);
     let metadata = Metadata::safe_deserialize(&mut metaplex_account_info_data.as_slice()).unwrap();
-    println!("{}", metadata.name);
-    println!("{}", metadata.symbol);
-    println!("{}", metadata.uri);
+    println!("name: {}", metadata.name);
+    println!("symbol: {}", metadata.symbol);
+    println!("ipfs_uri: {}", metadata.uri);
+
+    let response = http_client
+        .get(&metadata.uri)
+        .header("Content-Type", "application/json")
+        .header("Connection","keep-alive")
+        .send()
+        .await;
+        match response {
+            Ok(response) => {
+                let response_text=response.text().await.unwrap();
+                println!("{}", response_text);
+            }
+            Err(err) => {
+                println!("Error sending  : {}", err);
+            }
+        }
 }
 
