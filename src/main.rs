@@ -85,7 +85,7 @@ async fn main() {
 
     let sol_mint="So11111111111111111111111111111111111111112";
     let metaplex_program="metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s";
-    let mint="CYYiCKHBAzjWyCQNDQe4QZeCBcERgpKY9ASVgaDmbonk";
+    let mint="6PW9Vwrva89e9nvCr77itXLgBZYK3FYXjM23yc9tbonk";
     
 
     //Create web3 connection
