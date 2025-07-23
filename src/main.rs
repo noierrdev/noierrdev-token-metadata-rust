@@ -44,6 +44,7 @@ use serde_json::Value;
 use mpl_token_metadata::accounts::Metadata;
 use mpl_token_metadata::types::TokenStandard;
 
+use borsh::{BorshDeserialize, BorshSchema};
 
 #[derive(Debug, BorshDeserialize, BorshSchema)]
 pub struct Creator {
