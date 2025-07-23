@@ -48,6 +48,7 @@ use mpl_token_metadata::types::TokenStandard;
 
 use borsh::{BorshDeserialize, BorshSchema};
 
+
 // #[derive(Debug, BorshDeserialize, BorshSchema)]
 // pub struct Creator {
 //     pub address: Pubkey,
@@ -83,9 +84,11 @@ async fn main() {
     
     dotenv::dotenv().ok();
 
+    let args: Vec<String> = env::args().collect();
+
     let sol_mint="So11111111111111111111111111111111111111112";
     let metaplex_program="metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s";
-    let mint="6PW9Vwrva89e9nvCr77itXLgBZYK3FYXjM23yc9tbonk";
+    let mint="Fu86RXsapdrrwbR2asnVwHo2ZBCAoPy1tJAXHQwMSTYp";
     
 
     //Create web3 connection
