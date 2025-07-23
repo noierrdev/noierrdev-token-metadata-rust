@@ -43,7 +43,7 @@ use serde_json::json;
 use serde_json::Value;
 
 
-let metaplex_program="metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s";
+let static metaplex_program="metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s";
 
 #[tokio::main]
 async fn main() {
