@@ -112,11 +112,11 @@ async fn main() {
     let (metaplex_pda, metaplex_bump) = Pubkey::find_program_address(&[
         b"metadata",
         &Pubkey::from_str_const(metaplex_program).as_ref(),
-        &Pubkey::from_str_const(mint).as_ref(),
+        &Pubkey::from_str_const(&mint).as_ref(),
     ], &Pubkey::from_str_const(metaplex_program));
 
     println!("metadata_account: {}", metaplex_pda.to_string());
-    let mut token_info=rpc_client.get_account(&Pubkey::from_str_const(mint)).expect("NO account");
+    let mut token_info=rpc_client.get_account(&Pubkey::from_str_const(&mint)).expect("NO account");
     let token_info_data=Mint::unpack(&mut token_info.data).unwrap();
     println!("{:?}", token_info_data);
 
