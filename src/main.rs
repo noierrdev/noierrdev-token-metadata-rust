@@ -49,6 +49,7 @@ use clap::Parser;
 
 /// Simple CLI to fetch token mint info
 #[derive(Parser, Debug)]
+#[command(version, about, long_about = None)]
 struct Args {
     /// Token mint address
     #[arg(short, long)]
