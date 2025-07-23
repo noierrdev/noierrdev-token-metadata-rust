@@ -33,7 +33,7 @@ use spl_token::{
     instruction::transfer,
     instruction::sync_native,
     id as token_program_id, // Import the token program ID
-    state:Mint
+    state::Mint
 };
 
 use base64::{engine::general_purpose, Engine as _};
