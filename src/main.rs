@@ -65,7 +65,7 @@ async fn main() {
 fn get_metadata_pda(mint: &Pubkey) -> Pubkey {
     let metadata_seeds = &[
         b"metadata",
-        &Pubkey::from_str_const(metaplex_program).to_bytes(),
+        Pubkey::from_str_const(metaplex_program).to_bytes(),
         &mint.to_bytes(),
     ];
     let (pda, _bump) = Pubkey::find_program_address(metadata_seeds, &Pubkey::from_str_const(metaplex_program));
