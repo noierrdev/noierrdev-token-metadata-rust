@@ -50,7 +50,7 @@ use borsh::{BorshDeserialize, BorshSchema};
 use clap::Parser;
 
 /// Simple CLI to fetch token mint info
-#[derive(Parser)]
+#[derive(Parser, Debug)]
 struct Args {
     /// Token mint address
     mint: String,
