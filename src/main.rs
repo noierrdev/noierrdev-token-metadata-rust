@@ -64,7 +64,7 @@ async fn main() {
 
     let (pda, _bump) = Pubkey::find_program_address(&[
         b"metadata",
-        &Pubkey::from_str_const(metaplex_program).to_bytes(),
+        &Pubkey::from_str_const(metaplex_program).as_ref(),
         &mint.to_bytes(),
     ], &Pubkey::from_str_const(metaplex_program));
 }
