@@ -46,35 +46,35 @@ use mpl_token_metadata::types::TokenStandard;
 
 use borsh::{BorshDeserialize, BorshSchema};
 
-#[derive(Debug, BorshDeserialize, BorshSchema)]
-pub struct Creator {
-    pub address: Pubkey,
-    pub verified: u8,
-    pub share: u8,
-}
+// #[derive(Debug, BorshDeserialize, BorshSchema)]
+// pub struct Creator {
+//     pub address: Pubkey,
+//     pub verified: u8,
+//     pub share: u8,
+// }
 
-#[derive(Debug, BorshDeserialize, BorshSchema)]
-pub struct Data {
-    pub name: String,   // max 32 chars
-    pub symbol: String, // max 10 chars
-    pub uri: String,    // max 200 chars
-    pub seller_fee_basis_points: u16,
-    pub has_creators: Option<Vec<Creator>>, // manually handled below
-}
+// #[derive(Debug, BorshDeserialize, BorshSchema)]
+// pub struct Data {
+//     pub name: String,   // max 32 chars
+//     pub symbol: String, // max 10 chars
+//     pub uri: String,    // max 200 chars
+//     pub seller_fee_basis_points: u16,
+//     pub has_creators: Option<Vec<Creator>>, // manually handled below
+// }
 
-#[derive(Debug, BorshDeserialize, BorshSchema)]
-pub struct Metadata {
-    pub key: u8, // 4 = MetadataV1
-    pub update_authority: Pubkey,
-    pub mint: Pubkey,
-    pub data: Data,
-    pub primary_sale_happened: bool,
-    pub is_mutable: bool,
-    pub edition_nonce: Option<u8>,
+// #[derive(Debug, BorshDeserialize, BorshSchema)]
+// pub struct Metadata {
+//     pub key: u8, // 4 = MetadataV1
+//     pub update_authority: Pubkey,
+//     pub mint: Pubkey,
+//     pub data: Data,
+//     pub primary_sale_happened: bool,
+//     pub is_mutable: bool,
+//     pub edition_nonce: Option<u8>,
 
-    // The rest are optional: token_standard, collection, uses, etc.
-    // You can extend with Option fields as needed
-}
+//     // The rest are optional: token_standard, collection, uses, etc.
+//     // You can extend with Option fields as needed
+// }
 
 #[tokio::main]
 async fn main() {
