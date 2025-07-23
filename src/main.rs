@@ -103,7 +103,7 @@ async fn main() {
 
     println!("metadata_account: {}", metaplex_pda.to_string());
     let token_info=rpc_client.get_account(&Pubkey::from_str_const(mint)).unwrap();
-    let token_info_data=Mint::unpack(&mut token_info.data);
+    let token_info_data=Mint::unpack(&mut token_info.data).unwrap();
     println!("{:?}", token_info_data);
 
     let metaplex_account_info=rpc_client.get_account(&metaplex_pda).unwrap();
