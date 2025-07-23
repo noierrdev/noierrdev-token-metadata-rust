@@ -34,3 +34,4 @@ yellowstone-grpc-proto = "4.1.1"
 base64 = "0.21"
 time = "0.3"
 mpl-token-metadata="5.1.0"
+clap = { version = "4.5.41", features = ["derive"] }

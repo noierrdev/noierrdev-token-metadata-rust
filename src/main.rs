@@ -47,7 +47,14 @@ use mpl_token_metadata::accounts::Metadata;
 use mpl_token_metadata::types::TokenStandard;
 
 use borsh::{BorshDeserialize, BorshSchema};
+use clap::Parser;
 
+/// Simple CLI to fetch token mint info
+#[derive(Parser)]
+struct Args {
+    /// Token mint address
+    mint: String,
+}
 
 // #[derive(Debug, BorshDeserialize, BorshSchema)]
 // pub struct Creator {
@@ -84,7 +91,9 @@ async fn main() {
     
     dotenv::dotenv().ok();
 
-    let args: Vec<String> = env::args().collect();
+    // let args: Vec<String> = env::args().collect();
+    let args = Args::parse();
+    println!("{:?}", args);
 
     let sol_mint="So11111111111111111111111111111111111111112";
     let metaplex_program="metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s";
