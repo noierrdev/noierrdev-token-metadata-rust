@@ -33,6 +33,7 @@ use spl_token::{
     instruction::transfer,
     instruction::sync_native,
     id as token_program_id, // Import the token program ID
+    state:Mint
 };
 
 use base64::{engine::general_purpose, Engine as _};
@@ -102,7 +103,8 @@ async fn main() {
 
     println!("metadata_account: {}", metaplex_pda.to_string());
     let token_info=rpc_client.get_account(&Pubkey::from_str_const(mint)).unwrap();
-    println!("{:?}", token_info);
+    let token_info_data=Mint::unpack(&mut token_info.data);
+    println!("{:?}", token_info_data);
 
     let metaplex_account_info=rpc_client.get_account(&metaplex_pda).unwrap();
     
