@@ -100,12 +100,11 @@ async fn main() {
         &Pubkey::from_str_const(mint).as_ref(),
     ], &Pubkey::from_str_const(metaplex_program));
 
-    println!("{}", metaplex_pda.to_string());
+    println!("metadata_account: {}", metaplex_pda.to_string());
 
     let metaplex_account_info=rpc_client.get_account(&metaplex_pda).unwrap();
     
     let metaplex_account_info_data=metaplex_account_info.data;
-    println!("{:?}",metaplex_account_info_data);
     let metadata = Metadata::safe_deserialize(&mut metaplex_account_info_data.as_slice()).unwrap();
     println!("name: {}", metadata.name);
     println!("symbol: {}", metadata.symbol);
