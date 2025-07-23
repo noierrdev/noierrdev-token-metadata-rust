@@ -68,7 +68,7 @@ async fn main() {
         &Pubkey::from_str_const(mint).as_ref(),
     ], &Pubkey::from_str_const(metaplex_program));
 
-    println!("{}", metaplex_pda.to_string())
+    println!("{}", metaplex_pda.to_string());
 
     let metaplex_account_info=rpc_client.get_account(&metaplex_pda);
     println!("{:?}",metaplex_account_info);
