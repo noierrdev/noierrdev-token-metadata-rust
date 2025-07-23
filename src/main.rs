@@ -106,5 +106,7 @@ async fn main() {
     
     let metaplex_account_info_data=metaplex_account_info.data;
     println!("{:?}",metaplex_account_info_data);
+    let metadata = Metadata::deserialize(&mut metaplex_account_info_data.as_slice()).unwrap();
+    println!("{:?}", metadata);
 }
 
