@@ -42,7 +42,7 @@ use serde_json::json;
 use serde_json::Value;
 
 
-static metaplex_program="metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s";
+
 
 #[tokio::main]
 async fn main() {
@@ -50,6 +50,7 @@ async fn main() {
     dotenv::dotenv().ok();
 
     let sol_mint="So11111111111111111111111111111111111111112";
+    let metaplex_program="metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s";
     
 
     //Create web3 connection
@@ -59,14 +60,11 @@ async fn main() {
     let rpc_client = RpcClient::new_with_commitment(rpc_url.to_string(),commitment);
 
     let http_client=Client::new();
-}
 
-fn get_metadata_pda(mint: &Pubkey) -> Pubkey {
-    let metadata_seeds = &[
+    let (pda, _bump) = Pubkey::find_program_address(&[
         b"metadata",
         Pubkey::from_str_const(metaplex_program).to_bytes(),
         &mint.to_bytes(),
-    ];
-    let (pda, _bump) = Pubkey::find_program_address(metadata_seeds, &Pubkey::from_str_const(metaplex_program));
-    pda
+    ], &Pubkey::from_str_const(metaplex_program));
 }
+
