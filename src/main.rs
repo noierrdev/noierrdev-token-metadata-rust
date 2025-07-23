@@ -121,7 +121,20 @@ async fn main() {
         match response {
             Ok(response) => {
                 let response_text=response.text().await.unwrap();
-                println!("{}", response_text);
+                match serde_json::from_str::<Value>(&response_text){
+                    Ok(parsed_json)=>{
+                        let name=parsed_json.get("name");
+                        let symbol=parsed_json.get("symbol");
+                        let image=parsed_json.get("image");
+                        println!("name :  {}", name);
+                        println!("symbol :  {}", symbol);
+                        println!("image :  {}", image);
+                    }
+                    Err(err)=>{
+                        println!("==== {} =====",jito_url);
+                        println!("Error processing response : {}", err);
+                    }
+                }
             }
             Err(err) => {
                 println!("Error sending  : {}", err);
