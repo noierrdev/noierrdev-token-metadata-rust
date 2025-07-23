@@ -131,7 +131,6 @@ async fn main() {
                         println!("image :  {}", image);
                     }
                     Err(err)=>{
-                        println!("==== {} =====",jito_url);
                         println!("Error processing response : {}", err);
                     }
                 }
