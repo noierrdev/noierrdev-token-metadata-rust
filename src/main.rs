@@ -93,11 +93,12 @@ async fn main() {
 
     // let args: Vec<String> = env::args().collect();
     let args = Args::parse();
+    let mint=args.mint;
     println!("{:?}", args);
 
     let sol_mint="So11111111111111111111111111111111111111112";
     let metaplex_program="metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s";
-    let mint="Fu86RXsapdrrwbR2asnVwHo2ZBCAoPy1tJAXHQwMSTYp";
+    // let mint="Fu86RXsapdrrwbR2asnVwHo2ZBCAoPy1tJAXHQwMSTYp";
     
 
     //Create web3 connection
@@ -115,7 +116,7 @@ async fn main() {
     ], &Pubkey::from_str_const(metaplex_program));
 
     println!("metadata_account: {}", metaplex_pda.to_string());
-    let mut token_info=rpc_client.get_account(&Pubkey::from_str_const(mint)).unwrap();
+    let mut token_info=rpc_client.get_account(&Pubkey::from_str_const(mint)).expect("NO account");
     let token_info_data=Mint::unpack(&mut token_info.data).unwrap();
     println!("{:?}", token_info_data);
 
