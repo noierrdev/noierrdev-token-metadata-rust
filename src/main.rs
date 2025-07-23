@@ -51,6 +51,7 @@ async fn main() {
 
     let sol_mint="So11111111111111111111111111111111111111112";
     let metaplex_program="metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s";
+    let mint="E7t1xhf3b5QzRnJSaQ3fmBRBP63KmTNabZFqswsgpump";
     
 
     //Create web3 connection
@@ -63,7 +64,7 @@ async fn main() {
 
     let (pda, _bump) = Pubkey::find_program_address(&[
         b"metadata",
-        Pubkey::from_str_const(metaplex_program).to_bytes(),
+        &Pubkey::from_str_const(metaplex_program).to_bytes(),
         &mint.to_bytes(),
     ], &Pubkey::from_str_const(metaplex_program));
 }
