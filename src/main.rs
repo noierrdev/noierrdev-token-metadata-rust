@@ -51,6 +51,7 @@ use clap::Parser;
 #[derive(Parser, Debug)]
 struct Args {
     /// Token mint address
+    #[arg(short, long)]
     mint: String,
 }
 
