@@ -123,9 +123,9 @@ async fn main() {
                 let response_text=response.text().await.unwrap();
                 match serde_json::from_str::<Value>(&response_text){
                     Ok(parsed_json)=>{
-                        let name=parsed_json.get("name");
-                        let symbol=parsed_json.get("symbol");
-                        let image=parsed_json.get("image");
+                        let name=parsed_json.get("name").unwrap();
+                        let symbol=parsed_json.get("symbol").unwrap();
+                        let image=parsed_json.get("image").unwrap();
                         println!("name :  {}", name);
                         println!("symbol :  {}", symbol);
                         println!("image :  {}", image);
