@@ -41,8 +41,39 @@ use reqwest::Client;
 use serde_json::json;
 use serde_json::Value;
 
+use mpl_token_metadata::accounts::Metadata;
+use mpl_token_metadata::types::TokenStandard;
 
 
+#[derive(Debug, BorshDeserialize, BorshSchema)]
+pub struct Creator {
+    pub address: Pubkey,
+    pub verified: u8,
+    pub share: u8,
+}
+
+#[derive(Debug, BorshDeserialize, BorshSchema)]
+pub struct Data {
+    pub name: String,   // max 32 chars
+    pub symbol: String, // max 10 chars
+    pub uri: String,    // max 200 chars
+    pub seller_fee_basis_points: u16,
+    pub has_creators: Option<Vec<Creator>>, // manually handled below
+}
+
+#[derive(Debug, BorshDeserialize, BorshSchema)]
+pub struct Metadata {
+    pub key: u8, // 4 = MetadataV1
+    pub update_authority: Pubkey,
+    pub mint: Pubkey,
+    pub data: Data,
+    pub primary_sale_happened: bool,
+    pub is_mutable: bool,
+    pub edition_nonce: Option<u8>,
+
+    // The rest are optional: token_standard, collection, uses, etc.
+    // You can extend with Option fields as needed
+}
 
 #[tokio::main]
 async fn main() {
@@ -70,7 +101,9 @@ async fn main() {
 
     println!("{}", metaplex_pda.to_string());
 
-    let metaplex_account_info=rpc_client.get_account(&metaplex_pda);
-    println!("{:?}",metaplex_account_info);
+    let metaplex_account_info=rpc_client.get_account(&metaplex_pda).unwrap();
+    
+    let metaplex_account_info_data=metaplex_account_info.data;
+    println!("{:?}",metaplex_account_info_data);
 }
 
