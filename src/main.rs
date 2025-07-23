@@ -62,10 +62,12 @@ async fn main() {
 
     let http_client=Client::new();
 
-    let (pda, _bump) = Pubkey::find_program_address(&[
+    let (metaplex_pda, metaplex_bump) = Pubkey::find_program_address(&[
         b"metadata",
         &Pubkey::from_str_const(metaplex_program).as_ref(),
         &Pubkey::from_str_const(mint).as_ref(),
     ], &Pubkey::from_str_const(metaplex_program));
+
+    println!("{}", metaplex_pda.to_string())
 }
 
