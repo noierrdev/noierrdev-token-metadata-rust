@@ -141,9 +141,9 @@ async fn main() {
                         let name=parsed_json.get("name").unwrap();
                         let symbol=parsed_json.get("symbol").unwrap();
                         let image=parsed_json.get("image").unwrap();
-                        println!("name :  {:?}", name);
-                        println!("symbol :  {:?}", symbol);
-                        println!("image :  {:?}", image);
+                        println!("name :  {}", name);
+                        println!("symbol :  {}", symbol);
+                        println!("image :  {}", image);
                     }
                     Err(err)=>{
                         println!("Error processing response : {}", err);
